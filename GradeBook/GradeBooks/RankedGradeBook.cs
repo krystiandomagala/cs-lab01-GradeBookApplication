@@ -15,10 +15,23 @@ namespace GradeBook.GradeBooks
             if (Students.Count < 5) 
                 throw new InvalidOperationException("There are less than 5 students.");
 
-            double twentyProcentsOfStudents = Students.Count * 0.2;
+            double compartment = Students.Count * 0.2;
 
+            foreach (var student in Students)
+            {
+
+            }
 
             return '0';
+        }
+
+        public override void CalculateStatistics()
+        {
+            if (Students.Count < 5)
+                Console.WriteLine("Ranked grading requires at least 5 students.");
+            else
+                base.CalculateStatistics();
+
         }
     }
 }
