@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GradeBook.GradeBooks
 {
-    internal class RankedGradeBook : BaseGradeBook
+    public class RankedGradeBook : BaseGradeBook
     {
         public RankedGradeBook(string name, bool isWeighted) : base(name, isWeighted)
         {
@@ -15,14 +15,16 @@ namespace GradeBook.GradeBooks
             if (Students.Count < 5) 
                 throw new InvalidOperationException("There are less than 5 students.");
 
-            double compartment = Students.Count * 0.2;
+            if (averageGrade > 80)
+                return 'A';
+            if (averageGrade > 60)
+                return 'B';
+            if (averageGrade > 40)
+                return 'C';
+            if (averageGrade > 20)
+                return 'D';
 
-            foreach (var student in Students)
-            {
-
-            }
-
-            return '0';
+            return 'F';
         }
 
         public override void CalculateStatistics()
